@@ -1,5 +1,6 @@
 package com.generation.lojagames.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -30,12 +31,14 @@ public class ProdutoController {
 	private ProdutoRepository produtorepository;
 	private CategoriaRepository categoriarepository;
 	
+	//listar todos
 	@GetMapping 
 	public ResponseEntity <List <Produto>> getAll()
 	{
 		return ResponseEntity.ok(produtorepository.findAll());
 	}
 	
+	//buscar por ID
 	@GetMapping("/{id}")
 	public ResponseEntity <Produto> getById(@PathVariable Long id)
 	{
@@ -44,29 +47,48 @@ public class ProdutoController {
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
+	//buscar por nome
 	@GetMapping("/nome/{nome}")
 	public ResponseEntity <List <Produto>> getByTitulo(@PathVariable String nome)
 	{
 		return ResponseEntity.ok(produtorepository.findAllByNomeContainingIgnoreCase(nome));
 	}
 	
+	//cadastrar novo
 	@PostMapping
-	public ResponseEntity<Produto> postPostagem (@Valid @RequestBody Produto produto)
+	public ResponseEntity<Produto> postProduto(@Valid @RequestBody Produto produto)
 	{
 
+		if (categoriarepository.existsById(produto.getCategoria().getId()))
+		{
 		return ResponseEntity.status(HttpStatus.CREATED).
 				body(produtorepository.save(produto));
+		}
+		else
+		{
+			return ResponseEntity.notFound().build();
+		}
 	}
 	
+	//atualizar
 	@PutMapping
-	public ResponseEntity<Produto> putPostagem (@Valid @RequestBody Produto produto)
-	{
-		return produtorepository.findById(produto.getId())
-		.map(resposta -> ResponseEntity.status(HttpStatus.OK)
-		.body(produtorepository.save(produto)))
-		.orElse(ResponseEntity.notFound().build()); 
+	public ResponseEntity<Produto> putProduto(@Valid @RequestBody Produto produto) {
+					
+		if (produtorepository.existsById(produto.getId())){
+
+			return categoriarepository.findById(produto.getCategoria().getId())
+					.map(resposta -> {
+						return ResponseEntity.status(HttpStatus.OK)
+						.body(produtorepository.save(produto));
+					})
+					.orElse(ResponseEntity.badRequest().build());
+		}		
+		
+		return ResponseEntity.notFound().build();
+
 	}
 	
+	//deletar
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> deletePostagem(@PathVariable Long id)
 	{
@@ -76,6 +98,20 @@ public class ProdutoController {
 				return ResponseEntity.noContent().build();
 		}).orElse(ResponseEntity.notFound().build());
 	}
+	
+	// Consulta pelo preço maior do que o preço digitado emm ordem crescente
+	@GetMapping("/preco_maior/{preco}")
+	public ResponseEntity<List<Produto>> getPrecoMaiorQue(@PathVariable BigDecimal preco){ 
+		return ResponseEntity.ok(produtorepository.findByPrecoGreaterThanOrderByPreco(preco));
+	}
+	
+	// Consulta pelo preço menor do que o preço digitado em ordem decrescente
+	@GetMapping("/preco_menor/{preco}")
+	public ResponseEntity<List<Produto>> getPrecoMenorQue(@PathVariable BigDecimal preco){ 
+		return ResponseEntity.ok(produtorepository.findByPrecoLessThanOrderByPrecoDesc(preco));
+	}
+	
+	
 	
 	
 	

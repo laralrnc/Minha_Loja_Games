@@ -23,7 +23,7 @@ public class Categoria {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank(message = "O campo categoria é obrigátorio")
+	@NotBlank(message = "O campo descrição é obrigátorio")
 	private String descricao;
 	
 	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
