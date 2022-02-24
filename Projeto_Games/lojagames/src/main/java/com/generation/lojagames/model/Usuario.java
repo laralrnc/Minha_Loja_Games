@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -27,10 +29,22 @@ public class Usuario {
 	@Size(min = 3, max =8, message = "O campo senha deve ser maior que 3 e menor que 8 caracteres")
 	private String senha;
 	
+	@NotNull(message = "O campo idade é obrigatório")
+	@Positive(message = "Sua idade deve ser maior que zero")
+	private int idade;
+	
 	private String foto;
 
 	public Long getId() {
 		return id;
+	}
+
+	public int getIdade() {
+		return idade;
+	}
+
+	public void setIdade(int idade) {
+		this.idade = idade;
 	}
 
 	public void setId(Long id) {
