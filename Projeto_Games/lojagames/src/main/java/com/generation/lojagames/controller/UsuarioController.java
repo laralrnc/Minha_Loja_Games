@@ -82,7 +82,7 @@ public class UsuarioController {
 		}).orElse(ResponseEntity.notFound().build());
 	}
 	
-	// lista usuário maiores de 18 anos
+	// busca usuário maiores de 18 anos
 	@GetMapping("/maioridade/{idade}")
 	public ResponseEntity<List<Usuario>> getIdadeMaiorQue(@PathVariable int idade){ 
 		return ResponseEntity.ok(usuariorepository.findByIdadeGreaterThanOrderByIdade(idade));
