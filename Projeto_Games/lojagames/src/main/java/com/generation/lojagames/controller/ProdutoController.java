@@ -29,6 +29,8 @@ public class ProdutoController {
 	
 	@Autowired
 	private ProdutoRepository produtorepository;
+	
+	@Autowired
 	private CategoriaRepository categoriarepository;
 	
 	//listar todos
