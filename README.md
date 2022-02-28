@@ -22,7 +22,6 @@
 8. Buscar produtos com valor maior que 
 9. Buscar produtos com valor dentro de um intervalo específico
 10. Buscar pelo nome e categoria
-11. Buscar pelo console
 
 <h3>Metódos utilizados na tabela Usuário:</h3>
 
