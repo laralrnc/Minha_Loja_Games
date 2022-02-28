@@ -113,6 +113,19 @@ public class ProdutoController {
 		return ResponseEntity.ok(produtorepository.findByPrecoLessThanOrderByPrecoDesc(preco));
 	}
 	
+	@GetMapping("/porpreco/{inicial}/{segundo}")
+	public ResponseEntity<List<Produto>> findByPrecoBetween(@PathVariable BigDecimal inicial, @PathVariable BigDecimal segundo)
+	{
+		return ResponseEntity.ok(produtorepository.findByPrecoBetween(inicial, segundo));
+	}
+	
+	//buscar por nome
+	@GetMapping("/nome-categoria/{nome}/{descricao}")
+	public ResponseEntity<List <Produto>> getByNomeAndCategoria(@PathVariable String nome, @PathVariable String descricao)
+	{
+		return ResponseEntity.ok(produtorepository.
+				findByNomeContainingIgnoreCaseAndDescricaoContainingIgnoreCase(nome, descricao));
+	}
 	
 	
 	
