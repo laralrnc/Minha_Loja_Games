@@ -48,5 +48,5 @@
 <a href="https://imgur.com/q0XL55O"><img src="https://i.imgur.com/q0XL55O.png" title="source: imgur.com" /></a>
 <h3>Busca pelos produtos com preço maior que um valor específico. Exemplo: Exibição somente de produtos com valor acima de R$250:</h3>
 <a href="https://imgur.com/InUPTGi"><img src="https://i.imgur.com/InUPTGi.png" title="source: imgur.com" /></a>
-<h3>Busca utilizando dois parâmetros (nome e categoria). Exemplo: Exibição somente dos jogos que iniciam com "Gran" e com categoria que iniciam com "cor":</h3>
+<h3>Busca utilizando dois parâmetros (nome e categoria). Exemplo: Exibição somente dos jogos que iniciam com "Gran" e categorias que iniciam com "cor":</h3>
 <a href="https://imgur.com/O6c2qXS"><img src="https://i.imgur.com/O6c2qXS.png" title="source: imgur.com" /></a>
