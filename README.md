@@ -1,5 +1,5 @@
 # Loja de Games
-<h4>Projeto utilizando o framework Spring que simula a manipulação do banco de dados de um e-commerde de games</h4>
+<h4>Projeto utilizando o framework Spring que simula a manipulação do banco de dados de um e-commerce de games</h4>
 
 <h3>Metódos utilizados na tabela Categoria:</h3>
 
