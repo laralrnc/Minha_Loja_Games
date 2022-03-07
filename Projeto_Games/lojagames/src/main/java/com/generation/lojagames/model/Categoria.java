@@ -23,12 +23,13 @@ public class Categoria {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank(message = "O campo descrição é obrigátorio")
+	@NotBlank(message = "O campo descrição é obrigatório")
 	private String descricao;
 	
 	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("categoria")
 	private List <Produto> produto;
+	
 
 	public Long getId() {
 		return id;
@@ -40,6 +41,14 @@ public class Categoria {
 
 	public String getDescricao() {
 		return descricao;
+	}
+
+	public List<Produto> getProduto() {
+		return produto;
+	}
+
+	public void setProduto(List<Produto> produto) {
+		this.produto = produto;
 	}
 
 	public void setDescricao(String descricao) {

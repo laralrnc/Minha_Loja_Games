@@ -1,7 +1,0 @@
-package com.generation.lojagames.model;
-
-@Entity
-@
-public class Usuario {
-
-}

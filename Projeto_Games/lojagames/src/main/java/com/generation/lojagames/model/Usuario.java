@@ -1,14 +1,21 @@
 package com.generation.lojagames.model;
 
+import java.time.LocalDate;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table (name = "tb_usuario")
@@ -29,22 +36,33 @@ public class Usuario {
 	@Size(min = 3, max =8, message = "O campo senha deve ser maior que 3 e menor que 8 caracteres")
 	private String senha;
 	
-	@NotNull(message = "O campo idade é obrigatório")
-	@Positive(message = "Sua idade deve ser maior que zero")
-	private int idade;
+	@Column(name = "data_nascimento")
+	@JsonFormat(pattern = "dd-MM-yyyy")
+	@NotNull(message = "Campo data de nascimento obrigatório")
+	private LocalDate dataNascimento;
 	
 	private String foto;
+	
+	private String interesses;
 
 	public Long getId() {
 		return id;
 	}
 
-	public int getIdade() {
-		return idade;
+	public LocalDate getDataNascimento() {
+		return dataNascimento;
 	}
 
-	public void setIdade(int idade) {
-		this.idade = idade;
+	public void setDataNascimento(LocalDate dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	public String getInteresses() {
+		return interesses;
+	}
+
+	public void setInteresses(String interesses) {
+		this.interesses = interesses;
 	}
 
 	public void setId(Long id) {
