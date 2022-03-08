@@ -30,10 +30,10 @@ public class Usuario {
 	
 	@NotBlank(message = "O campo email é obrigatório")
 	@Size(min = 3, max =100, message = "O campo email deve ser maior que 3 e menor que 100 caracteres")
-	private String email;
+	private String usuario;
 	
 	@NotBlank(message = "O campo senha é obrigatório")
-	@Size(min = 3, max =8, message = "O campo senha deve ser maior que 3 e menor que 8 caracteres")
+	//@Size(min = 8, message = "O campo senha tem um mínimo de 8 caracteres")
 	private String senha;
 	
 	@Column(name = "data_nascimento")
@@ -77,14 +77,6 @@ public class Usuario {
 		this.nome = nome;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
 	public String getSenha() {
 		return senha;
 	}
@@ -100,6 +92,15 @@ public class Usuario {
 	public void setFoto(String foto) {
 		this.foto = foto;
 	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
 	
 	
 }

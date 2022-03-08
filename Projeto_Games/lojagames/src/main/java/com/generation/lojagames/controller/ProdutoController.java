@@ -34,7 +34,7 @@ public class ProdutoController {
 	private CategoriaRepository categoriarepository;
 	
 	//listar todos
-	@GetMapping 
+	@GetMapping("/all")
 	public ResponseEntity <List <Produto>> getAll()
 	{
 		return ResponseEntity.ok(produtorepository.findAll());
