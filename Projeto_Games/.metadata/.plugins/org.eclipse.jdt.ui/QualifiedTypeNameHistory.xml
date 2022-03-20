@@ -11,4 +11,13 @@
     <fullyQualifiedTypeName name="javax.validation.constraints.Size"/>
     <fullyQualifiedTypeName name="java.math.BigDecimal"/>
     <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.generation.lojagames.repository.UsuarioRepository"/>
+    <fullyQualifiedTypeName name="com.generation.lojagames.model.Usuario"/>
+    <fullyQualifiedTypeName name="java.util.Base64"/>
+    <fullyQualifiedTypeName name="java.util.Optional"/>
+    <fullyQualifiedTypeName name="java.nio.charset.Charset"/>
+    <fullyQualifiedTypeName name="com.generation.lojagames.service.UsuarioService"/>
+    <fullyQualifiedTypeName name="com.generation.lojagames.model.UsuarioLogin"/>
+    <fullyQualifiedTypeName name="com.generation.lojagames.model.Produto"/>
+    <fullyQualifiedTypeName name="com.generation.lojagames.service.ProdutoService"/>
 </qualifiedTypeNameHistroy>

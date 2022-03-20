@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.generation.lojagames.model.Produto;
 import com.generation.lojagames.repository.CategoriaRepository;
 import com.generation.lojagames.repository.ProdutoRepository;
+import com.generation.lojagames.service.ProdutoService;
 
 @RestController
 @RequestMapping("/produto")
@@ -32,6 +33,9 @@ public class ProdutoController {
 	
 	@Autowired
 	private CategoriaRepository categoriarepository;
+	
+	@Autowired
+	private ProdutoService produtoService;
 	
 	//listar todos
 	@GetMapping("/all")
@@ -127,7 +131,15 @@ public class ProdutoController {
 				findByNomeContainingIgnoreCaseAndDescricaoContainingIgnoreCase(nome, descricao));
 	}
 	
-	
+	//método de curtidas
+	@PutMapping("/curtida/{id}")
+	public ResponseEntity<Produto> curtirProdutoId(@PathVariable Long id) 
+	{
+					
+		return produtoService.curtir(id)
+				.map(resposta -> ResponseEntity.ok(resposta))
+				.orElse(ResponseEntity.badRequest().build());
+	}
 	
 	
 }
